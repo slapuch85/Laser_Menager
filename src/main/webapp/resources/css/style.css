@@ -1,0 +1,125 @@
+body{
+    margin: 0 !important;
+    background-color: #303030;
+}
+
+.container{
+    min-width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0;
+}
+
+.meni{
+    width: 100%;
+    padding:10px;
+    background-color: #c34f4f;
+    text-align: center;
+    border-top: 1px solid #751b1b;
+    border-bottom: 1px solid #751b1b;
+}
+ .content{
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+.programForm{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    vertical-align: middle;
+}
+
+#editBtn {
+    display: inline-block;
+}
+
+#delBtn {
+    display: inline-block;
+}
+
+.sticky
+{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+ol
+{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 18px;
+    height: 35px;
+    line-height: 200%;
+    display: inline-block;
+}
+
+ol a
+{
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}
+
+ol > li
+{
+    float:left;
+    width: 150px;
+    height: 40px;
+    border-right: 1px dashed #751b1b;
+}
+
+ol > li:first-child
+{
+    border-left: 1px dashed #751b1b;
+}
+
+ol > li:hover
+{
+    background-color: #cf6969;
+}
+
+ol > li:hover > a
+{
+    color: #451717;
+
+}
+
+ol > li:hover > ul
+{
+    display: block;
+}
+
+ol > li > ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    display: none;
+
+}
+
+ol > li > ul > li
+{
+    background-color: #cf6969;
+    position: relative;
+    z-index: 100;
+    border-top: 1px dashed #751b1b;
+}
+
+ol > li > ul > li:hover
+{
+    backgound-color: #c34f4f;
+}
+
+ol > li > ul > li:hover > a
+{
+    color: #451717;
+}
