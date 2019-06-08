@@ -28,8 +28,7 @@ public class LoginController {
             return "loginPage";
         } else if (BCrypt.checkpw(password, user.getPassword())) {
             model.addAttribute("userSession", user);
-            model.addAttribute("isLogged", true);
-            return "redirect:allProgramList";
+            return "redirect:/allProgramList";
         }
         return "loginPage";
     }

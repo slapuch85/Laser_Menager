@@ -5,6 +5,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="pracownicy")
@@ -24,6 +26,13 @@ public class User {
     private String email;
     @NotBlank(message = "To pole nie może być puste")
     private String password;
+
+    @OneToMany(mappedBy = "sender")
+    private List<Message> messagesSend = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiver")
+    private List<Message> messagesGet = new ArrayList<>();
+
 
     public User() {
     }
@@ -65,6 +74,22 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = BCrypt.hashpw(password, BCrypt.gensalt(5));
+        this.password = password;
+    }
+
+    public List<Message> getMessagesSend() {
+        return messagesSend;
+    }
+
+    public void setMessagesSend(List<Message> messagesSend) {
+        this.messagesSend = messagesSend;
+    }
+
+    public List<Message> getMessagesGet() {
+        return messagesGet;
+    }
+
+    public void setMessagesGet(List<Message> messagesGet) {
+        this.messagesGet = messagesGet;
     }
 }

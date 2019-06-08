@@ -11,41 +11,45 @@ public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
-    private List<User> users = new ArrayList<>();
-    @OneToMany
-    private List<Program> programs = new ArrayList<>();
+    private String userEmail;
+    private String programName;
+    @Column(name = "data_wyciecia")
     private LocalDateTime deleted;
 
     public History() {
+    }
+
+    public History(String userEmail, String programName) {
+        this.userEmail = userEmail;
+        this.programName = programName;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public List<Program> getPrograms() {
-        return programs;
-    }
-
-    public void setPrograms(List<Program> programs) {
-        this.programs = programs;
+    public String getProgramName() {
+        return programName;
     }
 
     public LocalDateTime getDeleted() {
         return deleted;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public void setProgramName(String programName) {
+        this.programName = programName;
     }
 
     @PrePersist

@@ -1,125 +1,120 @@
-body{
-    margin: 0 !important;
-    background-color: #303030;
-}
-
 .container{
-    min-width: 100%;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin: 0;
-}
 
-.meni{
-    width: 100%;
-    padding:10px;
-    background-color: #c34f4f;
-    text-align: center;
-    border-top: 1px solid #751b1b;
-    border-bottom: 1px solid #751b1b;
 }
- .content{
-     margin-left: auto;
-     margin-right: auto;
- }
-
-.programForm{
-    margin-left: auto;
-    margin-right: auto;
+#showDiv{
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
-
-td {
-    vertical-align: middle;
-}
-
-#editBtn {
-    display: inline-block;
-}
-
-#delBtn {
-    display: inline-block;
-}
-
-.sticky
+.menue
 {
-    width: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
+  width: 100%;
+  padding:10px;
+  background-color: #c34f4f;
+  text-align: center;
+  border-top: 1px solid #751b1b;
+  border-bottom: 1px solid #751b1b;
 }
 
-ol
-{
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    font-size: 18px;
-    height: 35px;
-    line-height: 200%;
-    display: inline-block;
+.content{
+  margin-right: auto;
+  margin-left: auto;
 }
 
-ol a
-{
-    color: #ffffff;
-    text-decoration: none;
-    display: block;
+.messageForm .programForm{
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hiddenDiv{
+  display: none;
+  width: 400px;
 }
 
-ol > li
+
+ul
 {
-    float:left;
-    width: 150px;
-    height: 40px;
-    border-right: 1px dashed #751b1b;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-size: 18px;
+  height: 40px;
+  line-height: 200%;
+  display: inline-block;
 }
 
-ol > li:first-child
+ul a
 {
-    border-left: 1px dashed #751b1b;
+  color: rgba(226, 226, 226, 0.96);
+  text-decoration: none;
+  display: block;
 }
 
-ol > li:hover
+ul > li
 {
-    background-color: #cf6969;
+  float:left;
+  width: 250px;
+  height: 45px;
+  border-right: 1px dashed #751b1b;
 }
 
-ol > li:hover > a
+ul > li:first-child
 {
-    color: #451717;
+  border-left: 1px dashed #751b1b;
+}
+
+ul > li:hover
+{
+  background-color: #cf6969;
+}
+
+ul > li:hover > a
+{
+  color: #451717;
 
 }
 
-ol > li:hover > ul
+ul > li:hover > ul
 {
-    display: block;
+  display: block;
 }
 
-ol > li > ul
+ul > li > ul
 {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    height: 40px;
-    display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  display: none;
 
 }
 
-ol > li > ul > li
+ul > li > ul > li
 {
-    background-color: #cf6969;
-    position: relative;
-    z-index: 100;
-    border-top: 1px dashed #751b1b;
+  background-color: #cf6969;
+  position: relative;
+  z-index: 100;
+  border-top: 1px dashed #751b1b;
 }
 
-ol > li > ul > li:hover
+ul > li > ul > li:hover
 {
-    backgound-color: #c34f4f;
+  backgound-color: #c34f4f;
 }
 
-ol > li > ul > li:hover > a
+ul > li > ul > li:hover > a
 {
-    color: #451717;
+  color: #451717;
+}
+
+#editBtn{
+  float: left;
+}
+
+#delBtn{
+  float: left;
+}
+
+tbody{
+  margin: auto;
+  vertical-align: center;
 }

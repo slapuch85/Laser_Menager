@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.entity.History;
 import pl.coderslab.entity.Program;
+import pl.coderslab.entity.User;
+import pl.coderslab.service.HistoryService;
 import pl.coderslab.service.ProgramService;
 import pl.coderslab.service.UserService;
 
@@ -22,11 +22,13 @@ public class ProgramController {
 
     private final ProgramService programService;
     private final UserService userService;
+    private final HistoryService historyService;
 
     @Autowired
-    public ProgramController(ProgramService programService, UserService userService) {
+    public ProgramController(ProgramService programService, UserService userService, HistoryService historyService) {
         this.programService = programService;
         this.userService = userService;
+        this.historyService = historyService;
     }
 
     @GetMapping("/allProgramList")
@@ -45,16 +47,16 @@ public class ProgramController {
     }
 
     @PostMapping("/program/remove")
-    public String removeProgram(@RequestParam(name = "id") Long id){
-        Program program = programService.findProgramById(id);
+    public String removeProgram(@RequestParam(name = "programId") Long programId,
+                                @RequestParam(name = "userId") Long userId){
+        Program program = programService.findProgramById(programId);
+        User user = userService.findById(userId);
+        historyService.addToHistory(new History(user.getEmail(), program.getTitle()));
         programService.deleteProgram(program);
         return "redirect:/allProgramList";
     }
 
-    @ModelAttribute("allPrograms")
-    public List<Program> allPrograms() {
-        return programService.allProgramList();
-    }
+
 
     @PostMapping("/program/edit")
     public String editProgram(@RequestParam(name="id") Long id, Model model){
@@ -74,6 +76,10 @@ public class ProgramController {
         return "redirect:/allProgramList";
     }
 
+    @ModelAttribute("allPrograms")
+    public List<Program> allPrograms() {
+        return programService.allProgramList();
+    }
 
 
 }

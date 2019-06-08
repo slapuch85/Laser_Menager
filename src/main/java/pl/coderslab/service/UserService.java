@@ -6,6 +6,7 @@ import pl.coderslab.entity.User;
 import pl.coderslab.repository.UserRepo;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -24,5 +25,13 @@ public class UserService {
 
     public User findByEmail(String email){
         return userRepo.findByEmail(email);
+    }
+
+    public User findById(Long id){
+        return userRepo.findOne(id);
+    }
+
+    public List<User> findAllUsers(){
+        return userRepo.findAll();
     }
 }

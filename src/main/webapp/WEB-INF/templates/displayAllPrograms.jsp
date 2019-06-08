@@ -10,56 +10,59 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <title>Programy</title>
+    <script src="/resources/js/showHiddenDiv.js" type="text/javascript"></script>
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/resources/css/style.css" rel="stylesheet">
+    <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>--%>
 
-      <link rel="stylesheet" href="/resources/css/style.css"/>
 
-    <link href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="webjars/font-awesome/5.8.2/css/all.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/resources/js/script.js" type="text/javascript"></script>
-    <script src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
-    <div class="meni">
-        <ol>
-            <li><a href="#">Strona główna</a></li>
-            <li><a href="#">Klasyki NES</a></li>
-            <li><a href="#">Gry filmowe</a></li>
-            <li><a href="#">Bijatyki</a></li>
+
+    <div class="menue">
+        <ul>
+            <li><a href="/allProgramList">Programy do wycięcia</a></li>
+            <li><a href="/history">Wycięte programy</a></li>
             <li>
                 <form method="post" action="/userPage">
-                    <i class="fas fa-envelope"></i> <span id="loggedUser">Zalogowano jako:</span>
                     <input type="hidden" name="id" value="${userSession.id}">
                     <input type="submit" value="${userSession.email}" class="btn btn-link">
                 </form>
             </li>
-            <li><a href="#">Wyloguj</a></li>
-        </ol>
+            <li><a href="/">Wyloguj</a></li>
+        </ul>
     </div>
-    <div class="programForm" style="width: 700px">
-        <h4 style="text-align: center">Dodaj nowy program</h4>
-        <form:form method="post" modelAttribute="program" action="addProgram">
-            <div class="md-form form-sm">
-                <form:input id="programTitle" path="title" class="form-control form-control-sm"/>
-                <label for="programTitle" class="disabled">Program</label>
-                <form:errors path="title" cssClass="error"/>
-            </div>
-            <div class="md-form form-sm">
-                <form:textarea id="programComment" path="comment" class="form-control form-control-sm"/>
-                <label for="programTitle" class="disabled">Komentarz</label>
-                <form:errors path="comment" cssClass="error"/>
-            </div>
-            <div class="md-form form-sm">
-                <input type="submit" value="Dodaj" class="btn btn-primary btn-block">
-            </div>
-        </form:form>
+    <div style="clear: both"></div>
+    <button type="button" id="showDiv" class="btn btn-info">dodaj program</button>
+
+    <div class="hiddenDiv">
+        <div class="programForm">
+            <form:form method="post" modelAttribute="program" action="addProgram">
+                <div class="small form-sm">
+                    <form:input id="programTitle" path="title" class="form-control form-control-sm"/>
+                    <label for="programTitle" class="disabled">Program</label>
+                    <form:errors path="title" cssClass="error"/>
+                </div>
+                <div class="md-form form-sm">
+                    <form:textarea id="programComment" path="comment" class="form-control form-control-sm"/>
+                    <label for="programTitle" class="disabled">Komentarz</label>
+                    <form:errors path="comment" cssClass="error"/>
+                </div>
+                <div class="md-form form-sm">
+                    <input type="submit" value="Dodaj" class="btn btn-info btn-block">
+                </div>
+            </form:form>
+        </div>
     </div>
 
-    <div class="content" style="width: 700px">
-        <h2 style="text-align: center">Kimla - programy do wycięcia</h2>
+    <div class="content">
+        <h4 style="text-align: center">Kimla - programy do wycięcia</h4>
         <table class="table table-sm table-striped">
             <thead class="thead-dark">
             <tr>
@@ -76,7 +79,8 @@
                     <td>
                         <div id="delBtn">
                             <form action="/program/remove/" method="post">
-                                <input type="hidden" name="id" value="${program.id}">
+                                <input type="hidden" name="programId" value="${program.id}">
+                                <input type="hidden" name="userId" value="${userSession.id}">
                                 <input type="submit" value="Usuń" class="btn btn-link">
                             </form>
                         </div>
@@ -91,7 +95,6 @@
             </c:forEach>
             </tbody>
         </table>
-        <p><a href="/" class="btn btn-block btn-primary">Wyloguj</a></p>
     </div>
 </div>
 </body>
